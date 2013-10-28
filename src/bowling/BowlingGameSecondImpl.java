@@ -14,7 +14,7 @@ public class BowlingGameSecondImpl implements BowlingGame {
 	private Deque<Frame> frames = new LinkedList<Frame>();
 
 	/* 
-	 * @see bowling.BowlingGameX#getCurrentFrameNumber()
+	 * @see bowling.BowlingGame#getCurrentFrameNumber()
 	 */
 	@Override
 	public int getCurrentFrameNumber() {
@@ -22,7 +22,7 @@ public class BowlingGameSecondImpl implements BowlingGame {
 	}
 	
 	/* 
-	 * @see bowling.BowlingGameX#getTotalScore()
+	 * @see bowling.BowlingGame#getTotalScore()
 	 */
 	@Override
 	public int getTotalScore() {
@@ -34,7 +34,7 @@ public class BowlingGameSecondImpl implements BowlingGame {
 	}
 	
 	/* 
-	 * @see bowling.BowlingGameX#isComplete()
+	 * @see bowling.BowlingGame#isComplete()
 	 */
 	@Override
 	public boolean isComplete() {
@@ -42,7 +42,7 @@ public class BowlingGameSecondImpl implements BowlingGame {
 	}
 	
 	/* 
-	 * @see bowling.BowlingGameX#throwBall(int)
+	 * @see bowling.BowlingGame#throwBall(int)
 	 */
 	@Override
 	public void throwBall(int pins) {
