@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class BowlingGameTest {
 	
-	private BowlingGame game = new BowlingGameFirstImpl();
+	private BowlingGame game = new BowlingGameImpl();
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeScore() {

@@ -26,5 +26,15 @@ public interface BowlingGame {
 	 * @return true if this bowling game is complete
 	 */
 	public abstract boolean isComplete();
-
+	
+	/**
+	 * Maximum number of frames in a game.
+	 */
+	public static final int MAX_FRAMES = 10;
+	
+	/**
+	 * The total pins in a single frame.
+	 */
+	public static final int TOTAL_PINS = 10;
+	
 }
