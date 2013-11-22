@@ -1,0 +1,3 @@
+mvn clean package
+clear
+java -jar target/bowling-1.0-SNAPSHOT.jar
