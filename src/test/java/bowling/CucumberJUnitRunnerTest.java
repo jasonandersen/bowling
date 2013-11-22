@@ -15,9 +15,4 @@ import org.junit.runner.RunWith;
 @CucumberOptions(format = "pretty")
 public class CucumberJUnitRunnerTest {
 
-	@Test
-	public void emptyTest() {
-		//noop - just trying to get Maven to pick this up
-	}
-	
 }
