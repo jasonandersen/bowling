@@ -2,6 +2,8 @@ package bowling;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
@@ -11,6 +13,11 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(format = "pretty")
-public class CucumberJUnitRunner {
+public class CucumberJUnitRunnerTest {
 
+	@Test
+	public void emptyTest() {
+		//noop - just trying to get Maven to pick this up
+	}
+	
 }
