@@ -24,7 +24,7 @@ public class BowlingGameStepDefs {
 		exception = null;
 	}
 
-	@When("^a player knocks down (\\d+) pins$")
+	@When("^a player knocks down (-?\\d+) pins$")
 	public void aPlayerKnocksDownPins(Integer numPins) throws Throwable {
 	    throwBall(numPins);
 	}
@@ -45,11 +45,15 @@ public class BowlingGameStepDefs {
 		}
 	}
 	
-	@Then("^an error should occur$")
+	@Then("^an error occurs$")
 	public void anErrorShouldOccur() throws Throwable {
 	    assertNotNull(exception);
 	}
 	
+	/**
+	 * Calls the throwBall method and catches any exceptions to store for later inspection
+	 * @param score
+	 */
 	private void throwBall(Integer score) {
 		try {
 			game.throwBall(score);
