@@ -1,5 +1,7 @@
 package bowling;
 
+import java.util.Collection;
+
 /**
  * Tracks the frames and scoring for a game of bowling.
  */
@@ -26,6 +28,11 @@ public interface BowlingGame {
 	 * @return true if this bowling game is complete
 	 */
 	public abstract boolean isComplete();
+	
+	/**
+	 * @return a read-only collection of frames, will never return a null but can return an empty collection
+	 */
+	public abstract Collection<Frame> getFrames();
 	
 	/**
 	 * Maximum number of frames in a game.

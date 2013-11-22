@@ -1,5 +1,7 @@
 package bowling;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -13,7 +15,6 @@ public class BowlingGameImpl implements BowlingGame {
 	/* 
 	 * @see bowling.BowlingGame#getCurrentFrameNumber()
 	 */
-	@Override
 	public int getCurrentFrameNumber() {
 		return getCurrentFrame() == null ? 0 : getCurrentFrame().getFrameNumber();
 	}
@@ -21,7 +22,6 @@ public class BowlingGameImpl implements BowlingGame {
 	/* 
 	 * @see bowling.BowlingGame#getTotalScore()
 	 */
-	@Override
 	public int getTotalScore() {
 		int score = 0;
 		for (Frame frame : frames) {
@@ -33,7 +33,6 @@ public class BowlingGameImpl implements BowlingGame {
 	/* 
 	 * @see bowling.BowlingGame#isComplete()
 	 */
-	@Override
 	public boolean isComplete() {
 		return getCurrentFrame() instanceof FinalFrame && getCurrentFrame().isComplete();
 	}
@@ -41,11 +40,17 @@ public class BowlingGameImpl implements BowlingGame {
 	/* 
 	 * @see bowling.BowlingGame#throwBall(int)
 	 */
-	@Override
 	public void throwBall(int pins) {
 		validateScore(pins);
 		setupCurrentFrame();
 		getCurrentFrame().recordPins(pins);
+	}
+	
+	/*
+	 * @see bowling.BowlingGame#getFrames()
+	 */
+	public Collection<Frame> getFrames() {
+		return Collections.unmodifiableCollection(frames);
 	}
 	
 	/**
@@ -56,8 +61,8 @@ public class BowlingGameImpl implements BowlingGame {
 		if (pins < 0) {
 			throw new IllegalArgumentException("score cannot be less than zero");
 		}
-		if (pins > TOTAL_PINS) {
-			throw new IllegalArgumentException("score cannot be greater than " + TOTAL_PINS);
+		if (pins > BowlingGame.TOTAL_PINS) {
+			throw new IllegalArgumentException("score cannot be greater than " + BowlingGame.TOTAL_PINS);
 		}
 	}
 	
