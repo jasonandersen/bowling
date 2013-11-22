@@ -27,8 +27,16 @@ public class Frame {
 	 */
 	public void recordPins(int pins) {
 		if (throw1Score == null) {
+			if (pins > BowlingGame.TOTAL_PINS) {
+				throw new IllegalArgumentException(pins + " is not a valid score");
+			}
 			throw1Score = pins;
 		} else if (throw2Score == null) {
+			if (throw1Score + pins > BowlingGame.TOTAL_PINS) {
+				String message = String.format("%d will push the number of pins for this frame %d past the maximum: %d", 
+						pins, pins + throw1Score, BowlingGame.TOTAL_PINS);
+				throw new IllegalArgumentException(message);
+			}
 			throw2Score = pins;
 		}
 	}
