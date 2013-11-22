@@ -1,10 +1,13 @@
 /**
  * 
  */
-package bowling;
+package bowling.cli;
 
 import java.io.Console;
 import java.io.IOException;
+
+import bowling.BowlingGame;
+import bowling.BowlingGameImpl;
 
 /**
  * An entry point into our application with a command line interface.

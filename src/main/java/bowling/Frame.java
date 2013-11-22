@@ -33,7 +33,7 @@ public class Frame {
 			throw1Score = pins;
 		} else if (throw2Score == null) {
 			if (throw1Score + pins > BowlingGame.TOTAL_PINS) {
-				String message = String.format("%d will push the number of pins for this frame %d past the maximum: %d", 
+				String message = String.format("%d will push the total number of pins for this frame (%d) past the maximum: %d", 
 						pins, pins + throw1Score, BowlingGame.TOTAL_PINS);
 				throw new IllegalArgumentException(message);
 			}
@@ -99,6 +99,20 @@ public class Frame {
 	 */
 	public void setNextFrame(Frame nextFrame) {
 		this.nextFrame = nextFrame;
+	}
+	
+	/**
+	 * @return the score for throw 1, will return null if throw 1 has not been registered yet
+	 */
+	public Integer getThrow1() {
+		return throw1Score;
+	}
+	
+	/**
+	 * @return the score for throw 2, will return null if throw 2 has not been registered yet
+	 */
+	public Integer getThrow2() {
+		return throw2Score;
 	}
 	
 	/**

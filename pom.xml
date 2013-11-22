@@ -45,7 +45,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>bowling.CommandLineMain</mainClass>
+							<mainClass>bowling.cli.CommandLineMain</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
