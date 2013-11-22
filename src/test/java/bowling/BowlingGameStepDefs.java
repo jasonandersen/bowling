@@ -32,6 +32,7 @@ public class BowlingGameStepDefs {
 	@Then("^the game score is (\\d+)$")
 	public void theGameScoreIs(int expectedScore) throws Throwable {
 	    assertEquals(expectedScore, game.getTotalScore());
+	    assertNull(exception);
 	}
 	
 	@Given("^these throws were recorded:$")
