@@ -16,14 +16,17 @@ public class BowlingGameStepDefs {
 	
 	private BowlingGame game;
 	
+	private Exception exception;
+	
 	@Given("^a new bowling game$")
 	public void aNewBowlingGame() throws Throwable {
 		game = new BowlingGameImpl();
+		exception = null;
 	}
 
 	@When("^a player knocks down (\\d+) pins$")
-	public void aPlayerKnocksDownPins(int numPins) throws Throwable {
-	    game.throwBall(numPins);
+	public void aPlayerKnocksDownPins(Integer numPins) throws Throwable {
+	    throwBall(numPins);
 	}
 
 	@Then("^the game score is (\\d+)$")
@@ -33,8 +36,24 @@ public class BowlingGameStepDefs {
 	
 	@Given("^these throws were recorded:$")
 	public void theseThrowsWereRecorded(List<Integer> scores) throws Throwable {
+		assert(exception == null);
 		for (Integer score : scores) {
+			if (exception == null) {
+				throwBall(score);
+			}
+		}
+	}
+	
+	@Then("^an error should occur$")
+	public void anErrorShouldOccur() throws Throwable {
+	    assertNotNull(exception);
+	}
+	
+	private void throwBall(Integer score) {
+		try {
 			game.throwBall(score);
+		} catch (Exception e) {
+			exception = e;
 		}
 	}
 }
