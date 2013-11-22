@@ -1,5 +1,5 @@
 Feature: Bowling Game
-
+ 
     Scenario: Throw the first ball of the first frame
         Given a new bowling game
         When a player knocks down 4 pins
@@ -30,9 +30,3 @@ Feature: Bowling Game
         When a player knocks down 3 pins
         And a player knocks down 3 pins
         Then the game score is 22
-        
-    Scenario: Two scores in one frame adding up to greater than 10 should throw an error
-        Given a new bowling game
-        And a player knocks down 5 pins
-        When a player knocks down 6 pins
-        Then an error should occur 
