@@ -10,7 +10,6 @@ import bowling.Frame;
  * Displays the score of a bowling game using ASCII characters.
  * 
  * @author Jason Andersen andersen.jason@gmail.com
- *
  */
 public class BowlingGameAsciiDisplay {
 	
@@ -39,10 +38,19 @@ public class BowlingGameAsciiDisplay {
 	 */
 	private List<char[][]> buildFrameMatrix() {
 		List<char[][]> matrix = new ArrayList<char[][]>();
+		
+		//add existing frames
 		for (Frame frame : game.getFrames()) {
 			FrameAsciiDisplay display = new FrameAsciiDisplay(frame);
 			matrix.add(display.display());
 		}
+		
+		//add blank frames at the end that haven't been bowled yet
+		for (int index = matrix.size(); index < 10; index++) {
+			FrameAsciiDisplay display = new FrameAsciiDisplay(null);
+			matrix.add(display.display());
+		}
+		
 		//add the total score at the end
 		ScoreAsciiDisplay score = new ScoreAsciiDisplay(game);
 		matrix.add(score.display());
