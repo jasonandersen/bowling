@@ -2,7 +2,9 @@ package bowling;
 
 
 /**
- * represents the last frame in a game
+ * Represents the last frame in a game
+ * 
+ * @author Jason Andersen (andersen.jason@gmail.com)
  */
 public class FinalFrame extends Frame {
 	

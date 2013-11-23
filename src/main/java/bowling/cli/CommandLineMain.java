@@ -17,6 +17,7 @@ import bowling.BowlingGameImpl;
 public class CommandLineMain {
 
 	/**
+	 * Entry point method
 	 * @param args
 	 * @throws IOException 
 	 */
@@ -29,6 +30,11 @@ public class CommandLineMain {
 		}
 	}
 	
+	/**
+	 * Register the number pins knocked down as input from the user
+	 * @param game
+	 * @param scoreInput
+	 */
 	private static void registerPins(BowlingGame game, String scoreInput) {
 		try {
 			game.throwBall(Integer.parseInt(scoreInput));
@@ -40,17 +46,30 @@ public class CommandLineMain {
 		
 	}
 	
+	/**
+	 * Write the game score out to the console
+	 * @param game
+	 */
 	private static void writeGameScore(BowlingGame game) {
 		BowlingGameAsciiDisplay display = new BowlingGameAsciiDisplay(game);
 		writeOutput(display.toString());
 	}
 	
+	/**
+	 * Read input in from the console from the user
+	 * @param format
+	 * @return
+	 */
 	private static String readInput(String format) {
 		Console console = System.console();
 		String input = console.readLine(format);
 		return input;
 	}
 	
+	/**
+	 * Write output to the console
+	 * @param output
+	 */
 	private static void writeOutput(Object output) {
 		Console console = System.console();
 		console.printf("%s\n", output);

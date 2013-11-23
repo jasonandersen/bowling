@@ -43,6 +43,9 @@ public class BowlingGameAsciiDisplay {
 			FrameAsciiDisplay display = new FrameAsciiDisplay(frame);
 			matrix.add(display.display());
 		}
+		//add the total score at the end
+		ScoreAsciiDisplay score = new ScoreAsciiDisplay(game);
+		matrix.add(score.display());
 		return matrix;
 	}
 	

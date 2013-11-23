@@ -14,5 +14,5 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(format = "pretty")
 public class CucumberJUnitRunnerTest {
-
+	//noop - just need the runner to execute the Cucumber classes
 }

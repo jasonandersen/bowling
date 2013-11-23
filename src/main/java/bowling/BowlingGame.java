@@ -4,6 +4,8 @@ import java.util.Collection;
 
 /**
  * Tracks the frames and scoring for a game of bowling.
+ * 
+ * @author Jason Andersen (andersen.jason@gmail.com)
  */
 public interface BowlingGame {
 

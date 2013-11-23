@@ -61,8 +61,8 @@ public class BowlingGameImpl implements BowlingGame {
 		if (pins < 0) {
 			throw new IllegalArgumentException("score cannot be less than zero");
 		}
-		if (pins > BowlingGame.TOTAL_PINS) {
-			throw new IllegalArgumentException("score cannot be greater than " + BowlingGame.TOTAL_PINS);
+		if (pins > TOTAL_PINS) {
+			throw new IllegalArgumentException("score cannot be greater than " + TOTAL_PINS);
 		}
 	}
 	
