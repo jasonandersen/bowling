@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bowling.BowlingGame;
+import bowling.FinalFrame;
 import bowling.Frame;
 
 /**
@@ -14,7 +15,7 @@ import bowling.Frame;
 public class BowlingGameAsciiDisplay {
 	
 	private final BowlingGame game;
-		
+	
 	/**
 	 * Constructor
 	 * @param game
@@ -38,23 +39,53 @@ public class BowlingGameAsciiDisplay {
 	 */
 	private List<char[][]> buildFrameMatrix() {
 		List<char[][]> matrix = new ArrayList<char[][]>();
-		
-		//add existing frames
-		for (Frame frame : game.getFrames()) {
-			FrameAsciiDisplay display = new FrameAsciiDisplay(frame);
-			matrix.add(display.display());
-		}
-		
-		//add blank frames at the end that haven't been bowled yet
-		for (int index = matrix.size(); index < 10; index++) {
-			FrameAsciiDisplay display = new FrameAsciiDisplay(null);
-			matrix.add(display.display());
-		}
-		
-		//add the total score at the end
-		ScoreAsciiDisplay score = new ScoreAsciiDisplay(game);
-		matrix.add(score.display());
+		matrix.addAll(buildExistingFramesMatrix());		
+		matrix.addAll(buildBlankFramesMatrix(matrix.size()));
+		matrix.add(buildScoreMatrix());
 		return matrix;
+	}
+	
+	/**
+	 * @return a display matrix for existing frames
+	 */
+	private List<char[][]> buildExistingFramesMatrix() {
+		List<char[][]> matrix = new ArrayList<char[][]>();
+		for (Frame frame : game.getFrames()) {
+			FrameAsciiDisplay display;
+			if (frame instanceof FinalFrame) {
+				display = new FinalFrameAsciiDisplay((FinalFrame)frame);
+			} else {
+				display = new FrameAsciiDisplay(frame);
+			}
+			matrix.add(display.display());
+		}
+		return matrix;
+	}
+	
+	/**
+	 * @param startingFrameIndex
+	 * @return a display matrix for any unplayed frames
+	 */
+	private List<char[][]> buildBlankFramesMatrix(int startingFrameIndex) {
+		List<char[][]> matrix = new ArrayList<char[][]>();
+		for (int index = startingFrameIndex; index < BowlingGame.MAX_FRAMES; index++) {
+			FrameAsciiDisplay display;
+			if (index < BowlingGame.MAX_FRAMES - 1) {
+				display = new FrameAsciiDisplay(null); //add regular frame
+			} else {
+				display = new FinalFrameAsciiDisplay(null); //add final frame
+			}
+			matrix.add(display.display());
+		}
+		return matrix;
+	}
+	
+	/**
+	 * @return a display matrix for the score box at the end of the game
+	 */
+	private char[][] buildScoreMatrix() {
+		ScoreAsciiDisplay score = new ScoreAsciiDisplay(game);
+		return score.display();
 	}
 	
 	/**

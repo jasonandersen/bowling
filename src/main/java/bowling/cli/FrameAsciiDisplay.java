@@ -17,7 +17,7 @@ import bowling.Frame;
  */
 public class FrameAsciiDisplay implements AsciiCellDisplay {
 	
-	private static final int CELL_HEIGHT = 5;
+	protected static final int CELL_HEIGHT = 5;
 	
 	private static final int CELL_WIDTH = 9;
 	
@@ -25,7 +25,7 @@ public class FrameAsciiDisplay implements AsciiCellDisplay {
 	
 	private static final String SCORES_FORMAT = "| %s : %s |";
 	
-	private final Frame frame;
+	protected final Frame frame;
 	
 	/**
 	 * Constructor
@@ -59,7 +59,7 @@ public class FrameAsciiDisplay implements AsciiCellDisplay {
 	/**
 	 * @return the number of the frame, will return a space if the frame is null
 	 */
-	private String getFrameNumber() {
+	protected String getFrameNumber() {
 		if (frame == null) {
 			return " ";
 		}
@@ -69,7 +69,7 @@ public class FrameAsciiDisplay implements AsciiCellDisplay {
 	/**
 	 * @return the first throw of the frame, will return a space if the frame is null or the first throw is null
 	 */
-	private String getThrow1Score() {
+	protected String getThrow1Score() {
 		if (frame == null) {
 			return " ";
 		}
@@ -88,7 +88,7 @@ public class FrameAsciiDisplay implements AsciiCellDisplay {
 	/**
 	 * @return the second throw of the frame, will return a space if the frame is null or the second throw is null
 	 */
-	private String getThrow2Score() {
+	protected String getThrow2Score() {
 		if (frame == null) {
 			return " ";
 		}

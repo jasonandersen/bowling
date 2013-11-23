@@ -1,12 +1,9 @@
 package bowling;
 
-
-
 /**
  * Represents a single frame within a single game of bowling.
  * 
  * @author Jason Andersen (andersen.jason@gmail.com)
- * 
  */
 public class Frame {
 	

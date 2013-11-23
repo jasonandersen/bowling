@@ -63,6 +63,13 @@ public class FinalFrame extends Frame {
 	}
 	
 	/**
+	 * @return the score for the third throw, can be null
+	 */
+	public Integer getThrow3() {
+		return throw3Score;
+	}
+	
+	/**
 	 * Convenience method to get around NPE's on Integer objects
 	 * @param score
 	 * @return
