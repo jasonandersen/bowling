@@ -17,3 +17,13 @@ To run tests - both **JUnit** tests and **Cucumber** tests - run the following c
 ```
     mvn clean test
 ```
+
+Cucumber feature files are located here:
+```
+src/test/resources/bowling
+```
+
+Cucumber stepdef file is located here:
+```
+src/test/java/bowling/BowlingGameStepDefs.java
+```
