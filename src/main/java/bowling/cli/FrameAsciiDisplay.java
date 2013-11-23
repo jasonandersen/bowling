@@ -38,7 +38,7 @@ public class FrameAsciiDisplay {
 	 * @return the display for this 
 	 */
 	public char[][] display() {
-		char[][] display = new char[CELL_HEIGHT][CELL_WIDTH];
+		char[][] display = new char[CELL_HEIGHT][getCellWidth()];
 		display[0] = buildOuterBorder();
 		display[1] = buildFrameNumber();
 		display[2] = buildInnerBorder();
@@ -46,12 +46,19 @@ public class FrameAsciiDisplay {
 		display[4] = buildOuterBorder();
 		return display;
 	}
-
+	
+	/**
+	 * @return the width of the cell
+	 */
+	protected int getCellWidth() {
+		return CELL_WIDTH;
+	}
+	
 	/**
 	 * @return an array filled with the displayer border
 	 */
 	private char[] buildOuterBorder() {
-		char[] border = new char[CELL_WIDTH];
+		char[] border = new char[getCellWidth()];
 		Arrays.fill(border, '-');
 		return border;
 	}
@@ -60,7 +67,7 @@ public class FrameAsciiDisplay {
 	 * @return an array containing the frame number
 	 */
 	private char[] buildFrameNumber() {
-		char[] frameNumber = new char[CELL_WIDTH];
+		char[] frameNumber = new char[getCellWidth()];
 		Arrays.fill(frameNumber, ' ');
 		frameNumber[0] = '|';
 		frameNumber[4] = getFrameNumber();
@@ -72,10 +79,10 @@ public class FrameAsciiDisplay {
 	 * @return an array containing the inner border
 	 */
 	private char[] buildInnerBorder() {
-		char[] border = new char[CELL_WIDTH];
+		char[] border = new char[getCellWidth()];
 		Arrays.fill(border, '-');
 		border[0] = '|';
-		border[8] = '|';
+		border[border.length - 1] = '|';
 		return border;
 	}
 	
@@ -83,7 +90,7 @@ public class FrameAsciiDisplay {
 	 * @return an array containing the frame scores
 	 */
 	private char[] buildScores() {
-		char[] scores = new char[CELL_WIDTH];
+		char[] scores = new char[getCellWidth()];
 		Arrays.fill(scores, '|');
 		
 		scores[1] = ' ';
