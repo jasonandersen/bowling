@@ -3,7 +3,7 @@ bowling
 
 This is a simple command line application that will track and display a user's bowling game score. The original software was built as part of a Test-Driven Development (TDD) exercise. It has been extended to use as an example for Cucumber testing.
 
-If you have Maven configured to run on your system, running the application from a bash shell is simple:
+If you have Maven configured to run on your system, run the application by navigating to the directory and issue this command:
 ```
     ./bowl
 ```
