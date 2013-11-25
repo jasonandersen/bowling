@@ -28,7 +28,12 @@ public class BowlingGameStepDefs {
 		game = new BowlingGameImpl();
 		exception = null;
 	}
-
+	
+	@Given("^there are no errors$")
+	public void there_are_no_errors() throws Throwable {
+	    assertNull(exception);
+	}
+	
 	@Given("^these throws were recorded:$")
 	public void theseThrowsWereRecorded(List<Integer> scores) throws Throwable {
 		assert(exception == null);
