@@ -18,23 +18,17 @@ public class BowlingGameStepDefs {
 	
 	private Exception exception;
 	
+	
+	/*
+	 * GIVEN step defs
+	 */
+	
 	@Given("^a new bowling game$")
 	public void aNewBowlingGame() throws Throwable {
 		game = new BowlingGameImpl();
 		exception = null;
 	}
 
-	@When("^a player knocks down (-?\\d+) pins$")
-	public void aPlayerKnocksDownPins(Integer numPins) throws Throwable {
-	    throwBall(numPins);
-	}
-
-	@Then("^the game score is (\\d+)$")
-	public void theGameScoreIs(int expectedScore) throws Throwable {
-	    assertEquals(expectedScore, game.getTotalScore());
-	    assertNull(exception);
-	}
-	
 	@Given("^these throws were recorded:$")
 	public void theseThrowsWereRecorded(List<Integer> scores) throws Throwable {
 		assert(exception == null);
@@ -45,9 +39,65 @@ public class BowlingGameStepDefs {
 		}
 	}
 	
+	@Given("^a bowling game at the beginning of the final frame with a zero score$")
+	public void aBowlingGameAtTheBeginningOfTheFinalFrameWithAZeroScore() throws Throwable {
+		game = new BowlingGameImpl();
+		while (game.getCurrentFrameNumber() < BowlingGame.MAX_FRAMES - 1) {
+			game.throwBall(0);
+		}
+		game.throwBall(0);
+		assertEquals(BowlingGame.MAX_FRAMES - 1, game.getCurrentFrameNumber());
+		assertTrue(game.getCurrentFrameIsComplete());
+		assertEquals(0, game.getTotalScore());
+	}
+	
+	
+	/*
+	 * WHEN step defs
+	 */
+	
+	@When("^the player scores (-?\\d+) pins?$")
+	public void thePlayerScoresPins(Integer numPins) throws Throwable {
+	    throwBall(numPins);
+	}
+	
+	@When("^the player throws a strike$")
+	public void thePlayerThrowsAStrike() throws Throwable {
+	    throwBall(BowlingGame.TOTAL_PINS);
+	}
+	
+	
+	/*
+	 * THEN step defs
+	 */
+	
+	@Then("^the game score is (\\d+)$")
+	public void theGameScoreIs(int expectedScore) throws Throwable {
+	    assertEquals(expectedScore, game.getTotalScore());
+	    assertNull(exception);
+	}
+
+	@Then("^the current frame number is (\\d+)$")
+	public void givenTheCurrentFrameNumberIs(int frameNum) throws Throwable {
+		assertEquals(frameNum, game.getCurrentFrameNumber());
+		assertNull(exception);
+	}
+	
 	@Then("^an error occurs$")
 	public void anErrorShouldOccur() throws Throwable {
 	    assertNotNull(exception);
+	}
+	
+	@Then("^the game is over$")
+	public void theGameIsOver() throws Throwable {
+		assertTrue(game.isComplete());
+		assertNull(exception);
+	}
+	
+	@Then("^the game is not over$")
+	public void theGameIsNotOver() throws Throwable {
+		assertFalse(game.isComplete());
+		assertNull(exception);
 	}
 	
 	/**

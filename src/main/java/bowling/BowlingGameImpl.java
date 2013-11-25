@@ -37,6 +37,13 @@ public class BowlingGameImpl implements BowlingGame {
 		return getCurrentFrame() instanceof FinalFrame && getCurrentFrame().isComplete();
 	}
 	
+	/*
+	 * @see bowling.BowlingGame#getCurrentFrameIsComplete()
+	 */
+	public boolean getCurrentFrameIsComplete() {
+		return getCurrentFrame() == null ? false : getCurrentFrame().isComplete();
+	}
+	
 	/* 
 	 * @see bowling.BowlingGame#throwBall(int)
 	 */

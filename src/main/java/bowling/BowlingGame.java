@@ -22,6 +22,11 @@ public interface BowlingGame {
 	public abstract int getCurrentFrameNumber();
 
 	/**
+	 * @return true if the current frame is complete
+	 */
+	public abstract boolean getCurrentFrameIsComplete();
+	
+	/**
 	 * @return the current score of the game
 	 */
 	public abstract int getTotalScore();
