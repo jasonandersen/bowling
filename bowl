@@ -1,4 +1,5 @@
 # Startup script
+# Runs tests, builds the jar and then runs it.
 mvn clean package
 clear
 java -jar target/bowling-1.0-SNAPSHOT.jar
